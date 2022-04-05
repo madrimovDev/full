@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+input[type="file"]{
+  display: none;
+}
+
+.custom-file{
+  @apply input input-bordered input-lg flex items-center
+}
