@@ -1,4 +1,4 @@
-import React, { FormEvent, HTMLInputTypeAttribute, useState } from "react";
+import React, { ChangeEvent, FormEvent, HTMLInputTypeAttribute, InputHTMLAttributes, useState } from "react";
 import { useDispatch } from "react-redux";
 import { productAction } from "../../redux/product/productAction";
 
@@ -6,25 +6,35 @@ export const AddProduct = () => {
   const [title, setTitle] = useState<HTMLInputTypeAttribute>();
   const [price, setPrice] = useState<HTMLInputTypeAttribute>();
   const [category, setCategory] = useState<HTMLInputTypeAttribute>();
-  const [img, setImg] = useState<HTMLInputTypeAttribute>();
+  const [img, setImg] = useState<ChangeEvent <HTMLInputElement> | string>();
   const [desc, setDesc] = useState<HTMLInputTypeAttribute>();
 
   const dispatch = useDispatch()
 
-  const submitHandler = (event: FormDataEvent) => {
+
+  const submitHandler = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    console.log(event);
-    
-    const newProduct = {
-      title, price, category, img, desc
-    }
-    dispatch(productAction(newProduct))
+    console.log(img);
+
+    let formdata = new FormData();
+    formdata.append("title", title!);
+    formdata.append("price", price!);
+    formdata.append("desc", desc!);
+    formdata.append("category", category!);
+    formdata.append("file", img ? img : '')
+
+    dispatch(productAction(formdata))
+  }
+
+  const handleFileSelect = (event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.currentTarget.files ? event.currentTarget.files[0] : event.currentTarget.files
+    setImg(file)
   }
 
   return (
     <>
       <h1 className="text-6xl m-10 mb-5">Prdouct info</h1>
-      <form encType="multipart/form-data" onSubmit={(event: FormEvent) => submitHandler(event)} className="w-3/4 mx-auto p-5 flex flex-col gap-5">
+      <form onSubmit={(event) => submitHandler(event)} className="w-3/4 mx-auto p-5 flex flex-col gap-5">
         <div className="form-control">
           <label className="label text-xl">Product Name</label>
           <label className="input-group">
@@ -75,13 +85,12 @@ export const AddProduct = () => {
         <div className="form-control">
           <label className="label text-xl">Product Photo</label>
           <label htmlFor="file" className="custom-file">
-            <span className="text-lg">Select File: {img}</span>
+            <span className="text-lg">{ }</span>
             <input
               name="file"
               id="file"
               type="file"
-              value={img}
-              onChange={(event) => setImg(event.target.value)}
+              onChange={(event) => handleFileSelect(event)}
               className="input input-bordered w-full"
             />
           </label>

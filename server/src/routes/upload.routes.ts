@@ -24,20 +24,20 @@ root.delete('/upload/delete/:id', (req, res) => {
 
 
 root.post('/upload', (req, res) => {
-  const { title, desc, price, category, img } = req.body
-  // const img = req.file?.path
+  const { title, desc, price, category } = req.body
 
+  const img = req.file?.path
+  const newProduct: Product = {
+    id: nanoid(),
+    category,
+    desc,
+    price,
+    title,
+    img: img ? img : ''
+  }
+  addProduct(newProduct)
 
-  // const newProduct: Product = {
-  //   id: nanoid(),
-  //   category,
-  //   desc,
-  //   price,
-  //   title,
-  //   img
-  // }
-  // addProduct(newProduct)
-  console.log(img);
+  console.log(req.body);
 
   res.sendStatus(200)
 })

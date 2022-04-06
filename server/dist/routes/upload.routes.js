@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
+const nanoid_1 = require("nanoid");
 const product_controller_1 = require("../controllers/product.controller");
 const root = (0, express_1.Router)();
 root.get('/upload', (req, res) => {
@@ -17,18 +18,19 @@ root.delete('/upload/delete/:id', (req, res) => {
     res.send(200).sendStatus(200);
 });
 root.post('/upload', (req, res) => {
-    const { title, desc, price, category, img } = req.body;
-    // const img = req.file?.path
-    // const newProduct: Product = {
-    //   id: nanoid(),
-    //   category,
-    //   desc,
-    //   price,
-    //   title,
-    //   img
-    // }
-    // addProduct(newProduct)
-    console.log(img);
+    var _a;
+    const { title, desc, price, category } = req.body;
+    const img = (_a = req.file) === null || _a === void 0 ? void 0 : _a.path;
+    const newProduct = {
+        id: (0, nanoid_1.nanoid)(),
+        category,
+        desc,
+        price,
+        title,
+        img: img ? img : ''
+    };
+    (0, product_controller_1.addProduct)(newProduct);
+    console.log(req.body);
     res.sendStatus(200);
 });
 exports.default = root;

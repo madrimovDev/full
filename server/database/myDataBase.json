@@ -1,20 +1,12 @@
 {
   "data": [
     {
-      "id": "0SNE8q6VUtVXjy_RT4r06",
-      "category": "Marge",
-      "desc": "12312312",
-      "img": "",
-      "price": "123123",
-      "title": "213123"
-    },
-    {
-      "id": "t6JJ8W2tQX_iNyMaoFWte",
-      "category": "Lisa",
-      "desc": "12312312desc",
-      "img": "",
-      "price": "1231232123221121",
-      "title": "213123 sasdwsasd wasdwsasdwas"
+      "id": "k0xK_vykM89HU0YRVJuu_",
+      "category": "Maggie",
+      "desc": "123123asdas",
+      "price": "100",
+      "title": "tavar",
+      "img": "public\\images\\1649263347218.png"
     }
   ]
 }
