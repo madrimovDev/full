@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, HTMLInputTypeAttribute, InputHTMLAttributes, useState } from "react";
+import React, { ChangeEvent, FormEvent, HTMLInputTypeAttribute,  useState } from "react";
 import { useDispatch } from "react-redux";
 import { productAction } from "../../redux/product/productAction";
 
@@ -6,7 +6,7 @@ export const AddProduct = () => {
   const [title, setTitle] = useState<HTMLInputTypeAttribute>();
   const [price, setPrice] = useState<HTMLInputTypeAttribute>();
   const [category, setCategory] = useState<HTMLInputTypeAttribute>();
-  const [img, setImg] = useState<ChangeEvent <HTMLInputElement> | string>();
+  const [img, setImg] = useState<any>();
   const [desc, setDesc] = useState<HTMLInputTypeAttribute>();
 
   const dispatch = useDispatch()
@@ -14,16 +14,23 @@ export const AddProduct = () => {
 
   const submitHandler = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    console.log(img);
+
+    if(!title?.trim() || !price?.trim() || !category?.trim() || !desc?.trim() || !img) return
 
     let formdata = new FormData();
     formdata.append("title", title!);
     formdata.append("price", price!);
     formdata.append("desc", desc!);
     formdata.append("category", category!);
-    formdata.append("file", img ? img : '')
+    formdata.append("file", img ? img : "")
 
     dispatch(productAction(formdata))
+
+    setTitle('')
+    setPrice('')
+    setImg(null)
+    setCategory('')
+    setDesc('')
   }
 
   const handleFileSelect = (event: ChangeEvent<HTMLInputElement>) => {
@@ -85,7 +92,7 @@ export const AddProduct = () => {
         <div className="form-control">
           <label className="label text-xl">Product Photo</label>
           <label htmlFor="file" className="custom-file">
-            <span className="text-lg">{ }</span>
+            <span className="text-lg"><span className="btn btn-primary w-24 btn-sm">File</span> {img?.name}</span>
             <input
               name="file"
               id="file"

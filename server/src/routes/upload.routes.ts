@@ -1,13 +1,14 @@
 import { Router } from "express";
-import { Multer } from "multer";
 import { nanoid } from "nanoid";
-import { addProduct, deleteProduct, findAllProduct, findProduct, Product } from "../controllers/product.controller";
+import { addProduct, deleteAllProducts, deleteProduct, findAllProduct, findProduct, Product } from "../controllers/product.controller";
 
 
 const root = Router()
 
 root.get('/upload', (req, res) => {
-  res.send(findAllProduct())
+  let data = findAllProduct()
+  res.send(data)
+  console.log(true);
 })
 
 root.get('/upload/:id', (req, res) => {
@@ -22,11 +23,15 @@ root.delete('/upload/delete/:id', (req, res) => {
   res.send(200).sendStatus(200)
 })
 
+root.delete('/upload/delete', (req, res) => {
+  deleteAllProducts()
+  res.status(200)
+})
 
 root.post('/upload', (req, res) => {
   const { title, desc, price, category } = req.body
 
-  const img = req.file?.path
+  const img = req.file?.filename
   const newProduct: Product = {
     id: nanoid(),
     category,
@@ -36,9 +41,6 @@ root.post('/upload', (req, res) => {
     img: img ? img : ''
   }
   addProduct(newProduct)
-
-  console.log(req.body);
-
   res.sendStatus(200)
 })
 

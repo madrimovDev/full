@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteProduct = exports.findAllProduct = exports.findProduct = exports.addProduct = void 0;
+exports.deleteAllProducts = exports.deleteProduct = exports.findAllProduct = exports.findProduct = exports.addProduct = void 0;
 const node_json_db_1 = require("node-json-db");
 const JsonDBConfig_1 = require("node-json-db/dist/lib/JsonDBConfig");
 const db = new node_json_db_1.JsonDB(new JsonDBConfig_1.Config("database/myDataBase", true, false, '/'));
@@ -23,3 +23,7 @@ const deleteProduct = (id) => {
     db.delete(`/data[${idx}]`);
 };
 exports.deleteProduct = deleteProduct;
+const deleteAllProducts = () => {
+    db.delete('/data');
+};
+exports.deleteAllProducts = deleteAllProducts;

@@ -30,6 +30,10 @@ const deleteProduct = (id: string) => {
   db.delete(`/data[${idx}]`)
 }
 
+const deleteAllProducts = () => {
+  db.delete('/data')
+}
+
 export {
-  addProduct, Product, findProduct, findAllProduct, deleteProduct,
+  addProduct, Product, findProduct, findAllProduct, deleteProduct, deleteAllProducts
 }

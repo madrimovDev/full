@@ -1,12 +1,1 @@
-{
-  "data": [
-    {
-      "id": "k0xK_vykM89HU0YRVJuu_",
-      "category": "Maggie",
-      "desc": "123123asdas",
-      "price": "100",
-      "title": "tavar",
-      "img": "public\\images\\1649263347218.png"
-    }
-  ]
-}
+{"data":[{"id":"xGimHFg-QVbt4lV_F62qp","category":"Bart","desc":"sdsad","price":"2","title":"as","img":"1649308895511.jpg"},{"id":"o4O_ZGwqi1kOS15KkazK5","category":"Lisa","desc":"asdasdwqdqawsdasd","price":"21321","title":"asdsad","img":"1649309278970.jpg"},{"id":"f0G_KeHNaSuKQ3WDy63B-","category":"Maggie","desc":"123213123 21312","price":"21232","title":"123","img":"1649309358249.jpg"},{"id":"Ay6DzdFPQTrTY-yZ8YBtz","category":"Lisa","desc":"asdsadwd asd","price":"213122","title":"123325","img":"1649309401288.jpg"},{"id":"RS4JdBA99JSrc7UmD0Xe4","category":"Bart","desc":"sadsada","price":"1000","title":"123123","img":"1649309535273.jpg"},{"id":"e39Y4WBlvdNaKnkj1ksMI","category":"Maggie","desc":"1","price":"1","title":"1","img":"1649309561761.jpg"},{"id":"NAL0ymeHRp7ICcIkiTFOf","category":"Lisa","desc":"undefined","price":"undefined","title":"111","img":"1649309652593.jpg"},{"id":"dKltcwAYzYNgKaCmUdFNy","category":"undefined","desc":"undefined","price":"undefined","title":"undefined","img":""},{"id":"xWMB3nCHnE4clsfQdHscW","category":"Maggie","desc":"description","price":"1000","title":"Shoe","img":"1649310173179.jpg"}]}
